@@ -4,12 +4,18 @@ import logging
 from typing import AsyncIterator
 from mcp.server.fastmcp import FastMCP
 
-from app.api.conversation import get_conversation_models as _get_conversation_models
-from app.api.tts import get_tts_models as _get_tts_models
-from app.api.voice_clone import get_voice_clone_models as _get_voice_clone_models
-from app.api.voice_changer import get_voice_changer_models as _get_voice_changer_models
-from app.api.voices import list_all_voices as _list_all_voices
-from app.api.voices import get_providers as _get_providers
+from voispark_mcp.api.conversation import (
+    get_conversation_models as _get_conversation_models,
+)
+from voispark_mcp.api.tts import get_tts_models as _get_tts_models
+from voispark_mcp.api.voice_clone import (
+    get_voice_clone_models as _get_voice_clone_models,
+)
+from voispark_mcp.api.voice_changer import (
+    get_voice_changer_models as _get_voice_changer_models,
+)
+from voispark_mcp.api.voices import list_all_voices as _list_all_voices
+from voispark_mcp.api.voices import get_providers as _get_providers
 
 
 @dataclass
@@ -99,7 +105,3 @@ async def list_all_voices(provider_id: str, voice_type: str) -> str | dict:
 def main():
     """Entry point for the voispark_mcp command."""
     mcp.run()
-
-
-if __name__ == "__main__":
-    main()

@@ -1,7 +1,7 @@
 import unittest
 
-from app.api.voice_changer import get_voice_changer_models
-from app.msg.voice_changer_msg import VoiceChangerModelsResponse
+from voispark_mcp.api.voice_changer import get_voice_changer_models
+from voispark_mcp.msg.voice_changer_msg import VoiceChangerModelsResponse
 
 
 class TestVoiceChanger(unittest.IsolatedAsyncioTestCase):

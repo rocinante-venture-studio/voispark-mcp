@@ -1,7 +1,7 @@
 import unittest
 
-from app.api.voices import list_all_voices, get_providers
-from app.msg.voices_msg import VoicesListResponse, VoiceProvidersResponse
+from voispark_mcp.api.voices import list_all_voices, get_providers
+from voispark_mcp.msg.voices_msg import VoicesListResponse, VoiceProvidersResponse
 
 
 class TestVoices(unittest.IsolatedAsyncioTestCase):

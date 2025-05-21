@@ -1,6 +1,6 @@
 import unittest
-from app.api.conversation import get_conversation_models
-from app.msg.conversation_msg import ConversationModelsResponse
+from voispark_mcp.api.conversation import get_conversation_models
+from voispark_mcp.msg.conversation_msg import ConversationModelsResponse
 
 
 class TestConversation(unittest.IsolatedAsyncioTestCase):

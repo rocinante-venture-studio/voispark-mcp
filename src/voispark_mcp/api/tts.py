@@ -1,7 +1,7 @@
-from app.core.api_request import get
-from app.core.error_code import ErrorCode
-from app.msg.base_resp import BaseResponse
-from app.msg.tts_msg import TTSProviderListResponse
+from voispark_mcp.core.api_request import get
+from voispark_mcp.core.error_code import ErrorCode
+from voispark_mcp.msg.base_resp import BaseResponse
+from voispark_mcp.msg.tts_msg import TTSProviderListResponse
 
 
 async def get_tts_models():

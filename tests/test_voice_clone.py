@@ -1,7 +1,7 @@
 import unittest
 
-from app.api.voice_clone import get_voice_clone_models
-from app.msg.voice_clone_msg import VoiceCloneModelsResponse
+from voispark_mcp.api.voice_clone import get_voice_clone_models
+from voispark_mcp.msg.voice_clone_msg import VoiceCloneModelsResponse
 
 
 class TestVoiceClone(unittest.IsolatedAsyncioTestCase):

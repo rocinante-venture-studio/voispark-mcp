@@ -1,7 +1,7 @@
 from typing import Optional, Any, Dict, TypeVar, Generic
 from pydantic import BaseModel, Field, model_validator
 
-from app.core.error_code import ErrorCode
+from voispark_mcp.core.error_code import ErrorCode
 
 # Define a TypeVar for the data field. It must be a Pydantic BaseModel.
 DataType = TypeVar("DataType", bound=BaseModel)

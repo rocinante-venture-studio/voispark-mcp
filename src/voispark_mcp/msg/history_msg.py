@@ -1,7 +1,7 @@
 from typing import Literal, Any
 from pydantic import BaseModel
 
-from app.msg.conversation_msg import ConversationSpeaker, ConversationText
+from voispark_mcp.msg.conversation_msg import ConversationSpeaker, ConversationText
 
 
 class History(BaseModel):

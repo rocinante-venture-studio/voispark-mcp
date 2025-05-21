@@ -1,7 +1,7 @@
 [project]
 name = "voispark-mcp"
-version = "0.1.1"
-description = "Add your description here"
+version = "0.0.1"
+description = "A Model Context Protocol (MCP) project for VoiSpark."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -12,7 +12,11 @@ dependencies = [
 ]
 
 [project.scripts]
-voispark_mcp = "app.main:main"
+voispark-mcp = "voispark_mcp:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [[tool.uv.index]]
 url = "https://pypi.org/simple"

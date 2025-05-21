@@ -1,7 +1,7 @@
-from app.core.api_request import get
-from app.core.error_code import ErrorCode
-from app.msg.base_resp import BaseResponse
-from app.msg.voice_changer_msg import VoiceChangerModelsResponse
+from voispark_mcp.core.api_request import get
+from voispark_mcp.core.error_code import ErrorCode
+from voispark_mcp.msg.base_resp import BaseResponse
+from voispark_mcp.msg.voice_changer_msg import VoiceChangerModelsResponse
 
 
 async def get_voice_changer_models():

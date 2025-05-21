@@ -1,7 +1,7 @@
 import unittest
 
-from app.api.tts import get_tts_models
-from app.msg.tts_msg import TTSProviderListResponse
+from voispark_mcp.api.tts import get_tts_models
+from voispark_mcp.msg.tts_msg import TTSProviderListResponse
 
 
 class TestTTS(unittest.IsolatedAsyncioTestCase):
