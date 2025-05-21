@@ -2,6 +2,25 @@
 name = "voispark-mcp"
 version = "0.0.1"
 description = "A Model Context Protocol (MCP) project for VoiSpark."
+keywords = [
+    "voispark",
+    "tts",
+    "text-to-speech",
+    "voice-changer",
+    "change-voice",
+    "voice-cloning",
+    "voice-clone",
+    "conversation",
+]
+maintainers = [{ name = "SkywalkerDarren", email = "yh322yh@outlook.com" }]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
