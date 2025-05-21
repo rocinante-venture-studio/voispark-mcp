@@ -14,30 +14,6 @@ A Model Context Protocol (MCP) server implementation for Voispark, enabling adva
 ### Tools
 <!-- Describe tools like analyze_speech, generate_speech -->
 
-## Getting Started
-
-1.  **Clone the repository (if you haven't already):**
-    ```bash
-    git clone <your-repository-url> # Replace with your repo URL
-    cd voispark_mcp
-    ```
-
-2.  **Set up Python Environment and Install Dependencies:**
-    This project uses `uv` for dependency management.
-    ```bash
-    python -m venv .venv # Create a virtual environment (recommended)
-    source .venv/bin/activate # On Windows: .\.venv\Scripts\activate
-    uv pip install -e . # Install the package and its dependencies in editable mode
-    ```
-
-3.  **Configure Voispark API Key:**
-    Create a `.env` file in the root of this repository (i.e., next to `pyproject.toml`).
-    Add your Voispark API key to this file:
-    ```env
-    VOISPARK_API_KEY="your_actual_api_key_here"
-    ```
-    The server will load this key to authenticate with Voispark services. Your `app/main.py` (or equivalent) should be configured to load this (e.g., using `python-dotenv`).
-
 ## Usage with Client Applications (e.g., Claude Desktop)
 
 To integrate this server with a client application, configure the client to run this MCP server.
@@ -50,24 +26,15 @@ Add the following to your client's server configuration (e.g., `claude_desktop_c
 {
   "mcpServers": {
     "voispark": {
-      "command": "uv",
-      "args": [
-        "run", // uv run will execute the script defined in pyproject.toml
-        "voispark_mcp" // This is the script name from [project.scripts]
-        // If your server needs to load .env from current dir, ensure `uv run` executes in project root
-        // Alternatively, if your script (app/main.py) loads .env relative to itself, this should be fine.
-        // You can pass additional arguments your server accepts after "voispark_mcp"
-      ],
+      "command": "uvx",
+      "args": ["voispark_mcp"],
       "env": {
-        // VOISPARK_API_KEY will be loaded from the .env file by the voispark_mcp script
-        // If .env is not in the execution directory, you might need to set it explicitly here or ensure your script finds it.
-      },
-      "working_directory": "/path/to/your/voispark_mcp" // Set this to the root of your voispark_mcp project
+        "VOISPARK_API_KEY": "<YOUR_API_KEY>"
+      }
     }
   }
 }
 ```
-**Note:** Ensure the `working_directory` points to the root of your `voispark_mcp` project so that it can find the `.env` file and any relative paths correctly.
 
 ## Usage with VS Code
 
@@ -83,35 +50,21 @@ For manual installation, add the following JSON block to your User Settings (JSO
 ### Using `uvx` (for executing installed package)
 
 ```json
+
 {
   "mcp": {
-    // "inputs": [ // If your server takes dynamic inputs like db_path
-    //   {
-    //     "type": "promptString",
-    //     "id": "api_key",
-    //     "description": "Voispark API Key",
-    //     "default": "${env:VOISPARK_API_KEY}" // Example: use environment variable
-    //   }
-    // ],
     "servers": {
       "voispark": {
-        "command": "uvx", // uvx runs executables from the environment
-        "args": [
-          "voispark_mcp" // Script name from pyproject.toml
-          // Add any arguments your server needs, e.g., "--api-key", "${input:api_key}"
-        ],
+        "command": "uvx",
+        "args": ["voispark_mcp"],
         "env": {
-          // Ensure VOISPARK_API_KEY is available if your script relies on it from os.environ
-          // "VOISPARK_API_KEY": "${env:VOISPARK_API_KEY}" // Redundant if .env is loaded by script
+        "VOISPARK_API_KEY": "<YOUR_API_KEY>"
         }
-        // "cwd": "${workspaceFolder}" // Ensures .env is found if loaded relative to cwd
       }
     }
   }
 }
 ```
-
-**Note for VS Code**: For API keys, it's often better to use VS Code's environment variable substitution (`${env:YOUR_ENV_VARIABLE}`) or input prompts, rather than hardcoding keys into `settings.json`. Ensure your Voispark server script (`app/main.py`) correctly loads the `VOISPARK_API_KEY` (e.g., from an `.env` file or environment variables).
 
 ## Building
 
@@ -127,9 +80,16 @@ Ensure you have `mcp[cli]` installed in your environment. You can add it with `u
 
 Run the MCP inspector pointing to your server's wrapper:
 ```bash
-mcp dev app.main:main # Assuming 'main' is the FastAPI app instance or wrapper function
+mcp dev app/main.py
 ```
-Adjust `app.main:main` if your ASGI app instance or MCP-compatible wrapper function is named differently or located elsewhere. This command should be run from the root of your `voispark_mcp` project.
+
+## Contributing
+
+We encourage contributions to help expand and improve voispark_mcp. Whether you want to add new time-related tools, enhance existing functionality, or improve documentation, your input is valuable.
+
+For examples of other MCP servers and implementation patterns, see: https://github.com/modelcontextprotocol/servers
+
+Pull requests are welcome! Feel free to contribute new ideas, bug fixes, or enhancements to make voispark_mcp even more powerful and useful.
 
 ## License
 
