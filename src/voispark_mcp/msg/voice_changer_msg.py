@@ -1,6 +1,8 @@
 from typing import Union, Literal, Optional
 from pydantic import BaseModel, Field
 
+from voispark_mcp.msg.audio_msg import AudioTaskDetails
+
 
 class VoiceChangerModelConfig(BaseModel):
     param_name: str
@@ -71,7 +73,9 @@ class ChangeVoiceRequest(BaseModel):
     provider: str
     model_id: str
     voice_id: str
-    configs: Union[CartesiaVoiceChangerConfig, ElevenLabsVoiceChangerConfig]
+    configs: Union[CartesiaVoiceChangerConfig, ElevenLabsVoiceChangerConfig, None] = (
+        None
+    )
     sync: bool = Field(
         default=True, description="sync should be true when using the API"
     )
@@ -79,6 +83,9 @@ class ChangeVoiceRequest(BaseModel):
 
 class ChangeVoiceResponse(BaseModel):
     task_id: str
+    status: Literal["success", "failed"]
+    details: Optional[AudioTaskDetails] = None
+    error: Optional[str] = None
 
 
 class VoiceChangerModelsResponse(BaseModel):

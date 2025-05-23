@@ -2,6 +2,8 @@ from typing import Union, Literal, Optional
 
 from pydantic import BaseModel, Field
 
+from voispark_mcp.msg.audio_msg import AudioTaskDetails
+
 
 class TTSModelConfig(BaseModel):
     param_name: str
@@ -186,7 +188,8 @@ class GenerateTTSRequest(BaseModel):
         FishAudioConfig,
         OrpheusConfig,
         MinimaxConfig,
-    ]
+        None,
+    ] = None
     sync: bool = Field(
         default=True, description="sync should be true when using the API"
     )
@@ -194,3 +197,6 @@ class GenerateTTSRequest(BaseModel):
 
 class GenerateTTSResponse(BaseModel):
     task_id: str
+    status: Literal["success", "failed"]
+    details: Optional[AudioTaskDetails] = None
+    error: Optional[str] = None

@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Optional
 
 
 class ErrorCode(Enum):
@@ -26,7 +27,7 @@ class ErrorCode(Enum):
         return self.value[1]
 
     @classmethod
-    def get_by_code(cls, code_value: int) -> "ErrorCode | None":
+    def get_by_code(cls, code_value: int) -> "Optional[ErrorCode]":
         """
         Retrieves an ErrorCode member by its numeric code.
 

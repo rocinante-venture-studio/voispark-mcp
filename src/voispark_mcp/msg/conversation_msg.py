@@ -1,6 +1,8 @@
 from typing import Union, Literal, Optional
 from pydantic import BaseModel, Field
 
+from voispark_mcp.msg.audio_msg import AudioTaskDetails
+
 
 class NariLabsConversationConfig(BaseModel):
     cfg_scale: float = Field(
@@ -93,7 +95,7 @@ class GenerateConversationRequest(BaseModel):
     provider: str
     conversation: list[ConversationTurn]
     speaker: list[SpeakerConfigItem]
-    configs: Union[SesameConversationConfig, NariLabsConversationConfig]
+    configs: Union[SesameConversationConfig, NariLabsConversationConfig, None] = None
     sync: bool = Field(
         default=True, description="sync should be true when using the API"
     )
@@ -101,6 +103,9 @@ class GenerateConversationRequest(BaseModel):
 
 class GenerateConversationResponse(BaseModel):
     task_id: str
+    status: Literal["success", "failed"]
+    details: Optional[AudioTaskDetails] = None
+    error: Optional[str] = None
 
 
 class GetSpeakersResponse(BaseModel):

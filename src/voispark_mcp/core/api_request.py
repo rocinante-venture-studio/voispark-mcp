@@ -32,7 +32,7 @@ async def get(
 
 async def post(
     path: str,
-    data: Optional[Type[V]] = None,
+    data: Optional[V] = None,
     response_model: Optional[Type[U]] = None,
 ) -> Optional[U]:
     async with ClientSession(headers=HEADERS, base_url=BASE_URL) as session:
