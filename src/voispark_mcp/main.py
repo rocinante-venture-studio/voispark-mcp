@@ -2,7 +2,6 @@ from contextlib import asynccontextmanager
 from dataclasses import dataclass
 import logging
 from typing import AsyncIterator, Literal, Union
-from httpx import request
 from mcp.server.fastmcp import FastMCP
 
 from voispark_mcp.api.conversation import (
